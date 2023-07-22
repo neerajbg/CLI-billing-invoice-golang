@@ -37,9 +37,32 @@ func main() {
 	// Instantiate Product struct
 	pd := Product{}
 
-	pd = pd.add_product()
+	productList := []Product{}
 
-	fmt.Printf("Amount for the Product \"%v\" with \"%v\" Quantity is \n", pd.name, pd.quantity)
+	for {
+		pd = pd.add_product()
 
-	fmt.Printf("Amount Due: %v\n", pd.price*pd.quantity)
+		productList = append(productList, pd)
+
+		fmt.Println("Product added. Press q to exit and any other key to exit!")
+
+		var q string
+		fmt.Scanln(&q)
+
+		if q == "q" {
+			break
+		}
+
+	}
+
+	fmt.Println()
+	var amountDue float64
+	for i, product := range productList {
+		fmt.Printf("%v)\t Product:\"%v\" \t Rate:\"%v\" \t Quantity: %v \n", i, product.name, product.price, product.quantity)
+
+		amountDue += product.price * product.quantity
+
+	}
+
+	fmt.Printf("\nAmount Due: %v\n", amountDue)
 }
