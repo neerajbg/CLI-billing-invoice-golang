@@ -2,38 +2,44 @@ package main
 
 import "fmt"
 
+// Application name
 const APP_NAME string = "Billing and Invoice Generation"
 
+// Product Struct
 type Product struct {
 	name     string
 	price    float64
 	quantity float64
 }
 
+// Product Struct function
 func (pd Product) add_product() Product {
+	// // Ask for product name
+	fmt.Printf("Please enter product name\n")
+	fmt.Scan(&pd.name)
+
+	// // Ask for product Unit price
+	fmt.Printf("Please enter Unit price of the product\n")
+	fmt.Scan(&pd.price)
+
+	// // Ask for Quantity to be purchased
+	fmt.Printf("Please enter Quantity to be purchased\n")
+	fmt.Scan(&pd.quantity)
 
 	return pd
 }
 
 func main() {
 
-	// // Step1 - Ask for product name
-	var product string
-	fmt.Printf("Please enter product name\n")
-	fmt.Scan(&product)
+	// Display Application name
+	fmt.Println(APP_NAME, "\n\n")
 
-	// // Step2 - Ask for product Unit price
-	var price float64
-	fmt.Printf("Please enter Unit price of the product\n")
-	fmt.Scan(&price)
+	// Instantiate Product struct
+	pd := Product{}
 
-	// // Step3 - Ask for  Quantity to be purchased
-	var quantity float64
-	fmt.Printf("Please enter Quantity to be purchased\n")
-	fmt.Scan(&quantity)
+	pd = pd.add_product()
 
-	fmt.Printf("Amount for the Product \"%v\" with \"%v\" Quantity is \n", product, quantity)
+	fmt.Printf("Amount for the Product \"%v\" with \"%v\" Quantity is \n", pd.name, pd.quantity)
 
-	fmt.Printf("Amount Due: %v\n", price*quantity)
-
+	fmt.Printf("Amount Due: %v\n", pd.price*pd.quantity)
 }
