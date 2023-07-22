@@ -58,7 +58,7 @@ func main() {
 	fmt.Println()
 	var amountDue float64
 	for i, product := range productList {
-		fmt.Printf("%v)\t Product:\"%v\" \t Rate:\"%v\" \t Quantity: %v \n", i, product.name, product.price, product.quantity)
+		fmt.Printf("%v)\t Product:\"%v\" \t Rate:\"%v\" \t Quantity: %v \n", i+1, product.name, product.price, product.quantity)
 
 		amountDue += product.price * product.quantity
 
