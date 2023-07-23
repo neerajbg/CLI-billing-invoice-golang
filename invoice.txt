@@ -1,0 +1,7 @@
+Billing and Invoice Generation
+Date and Time: 2023-07-24 00:32:42.483839405 +0530 IST m=+18.193694896
+
+1)	 Product:"test1" 	 Rate:"2" 	 Quantity: 3 
+2)	 Product:"wqwq" 	 Rate:"1.2" 	 Quantity: 3.2 
+
+Amount Due: 9.84

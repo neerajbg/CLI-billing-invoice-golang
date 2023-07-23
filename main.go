@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"time"
+)
 
 // Application name
 const APP_NAME string = "Billing and Invoice Generation"
@@ -44,7 +48,7 @@ func main() {
 
 		productList = append(productList, pd)
 
-		fmt.Println("Product added. Press q to exit and any other key to exit!")
+		fmt.Println("Product added. Press q to exit and any other key to Continue!")
 
 		var q string
 		fmt.Scanln(&q)
@@ -57,12 +61,24 @@ func main() {
 
 	fmt.Println()
 	var amountDue float64
+
+	invoiceData := fmt.Sprintf("%v\n", APP_NAME)
+	invoiceData += fmt.Sprintf("Date and Time: %v\n\n", time.Now())
 	for i, product := range productList {
-		fmt.Printf("%v)\t Product:\"%v\" \t Rate:\"%v\" \t Quantity: %v \n", i+1, product.name, product.price, product.quantity)
+
+		invoiceData += fmt.Sprintf("%v)\t Product:\"%v\" \t Rate:\"%v\" \t Quantity: %v \n", i+1, product.name, product.price, product.quantity)
 
 		amountDue += product.price * product.quantity
 
 	}
 
-	fmt.Printf("\nAmount Due: %v\n", amountDue)
+	invoiceData += fmt.Sprintf("\nAmount Due: %v\n", amountDue)
+
+	err := os.WriteFile("invoice.txt", []byte(invoiceData), 0644)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println("Invoice successfully generated.")
 }
