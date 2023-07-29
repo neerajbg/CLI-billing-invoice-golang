@@ -1,0 +1,5 @@
+# Build for the default OS
+go build -o build/billing
+
+# Build for windows
+GOOS=windows GOARCH=amd64 go build -o build/billing.exe
